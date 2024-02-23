@@ -1,0 +1,10 @@
+
+:root {
+    --black-bg: #171515;
+    --coffee-bg: #FFE2AB;
+    --text-white: #ffffff
+}
+
+body {
+    background: var(--black-bg);
+}
