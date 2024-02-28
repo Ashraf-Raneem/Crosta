@@ -27,6 +27,7 @@ body {
     width: 100%;
     font-family: 'newsreader';
     background-color: var(--black-bg);
+    z-index: 5;
 }
 .nav span {
     cursor: pointer;
@@ -182,3 +183,74 @@ body {
     font-weight: 500;
     font-family: 'newsreader';
 }
+
+/* Barista section */
+.barista {
+    margin: 80px 10%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.barista-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 70%;
+}
+.barista-text-main {
+    font-size: 60px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.barista-text-sub {
+    margin-top: 18px;
+    font-size: 16px;
+    font-family: 'newsreader';
+}
+.barista-btn {
+    margin-top: 32px;
+    font-size: 25px;
+    border: 1px solid var(--text-white);
+    background: transparent;
+    padding: 15px 25px;
+    cursor: pointer;
+    color: var(--text-white);
+}
+.barista-image {
+    display: flex;
+    flex-direction: column;
+}
+.barista-image > span {
+    margin-top: 10px;
+    font-family: 'newsreader';
+}
+
+
+/* Barista section */
+.review {
+    background: var(--coffee-bg);
+    padding: 80px 10%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+}
+
+.review-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 70%;
+    color: var(--black-bg);
+}
+.review-text-main {
+    font-size: 60px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.review-text-sub {
+    margin-top: 18px;
+    font-size: 16px;
+    font-family: 'newsreader';
+}
+
+
