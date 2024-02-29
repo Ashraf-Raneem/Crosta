@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
 @font-face {
-    font-family: 'newsreader'; /*a name to be used later*/
+    font-family: 'newsreader';
     src: url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+}
+@font-face {
+    font-family: "perpetua";
+    src: url("https://db.onlinewebfonts.com/t/e228cb7a060591d3e95897146a2f2b92.eot");
 }
 
 :root {
@@ -54,6 +58,7 @@ body {
     font-size: 60px;
     font-weight: 500;
     text-transform: uppercase;
+    font-family: 'perpetua';
     width: 80%;
 }
 .cover-text-sub {
@@ -201,6 +206,7 @@ body {
     font-size: 60px;
     font-weight: 500;
     text-transform: uppercase;
+    font-family: 'perpetua';
 }
 .barista-text-sub {
     margin-top: 18px;
@@ -253,4 +259,50 @@ body {
     font-family: 'newsreader';
 }
 
-
+/* Footer */
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 10%;
+    font-family: 'newsreader';
+}
+.icon-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+}
+.logo-xl {
+    margin: 20px 0px;
+    justify-self: center;
+}
+.footer-info-container {
+    display: flex;
+    width: 80%;
+    margin: 50px 0px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+.grid {
+    display: flex;
+    flex-direction: column;
+    font-weight: lighter;
+    max-width: 200px;
+}
+.grid .head {
+    margin-bottom: 15px;
+    font-weight: 900;
+}
+.grid span {
+    margin: 5px 0px;
+} 
+.grid .underline {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.copyright {
+    text-align: center;
+}
