@@ -5,7 +5,7 @@
 }
 @font-face {
     font-family: "perpetua";
-    src: url("https://db.onlinewebfonts.com/t/e228cb7a060591d3e95897146a2f2b92.eot");
+    src: url("https://db.onlinewebfonts.com/t/e228cb7a050591d3e95897146a2f2b92.eot");
 }
 
 :root {
@@ -55,7 +55,7 @@ body {
     z-index: 5;
 }
 .cover-text-main {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 500;
     text-transform: uppercase;
     font-family: 'perpetua';
@@ -65,6 +65,8 @@ body {
     margin-top: 10px;
     font-size: 16px;
     width: 40%;
+    letter-spacing: 5%;
+    line-height: 22px;
     font-family: 'newsreader';
 }
 .line {
@@ -75,7 +77,7 @@ body {
 .cover-image-wrap {
     position: relative;
     width: 500px;
-    height: 600px;
+    height: 500px;
     z-index: -1;
 }
 .cover-image-one {
@@ -105,7 +107,7 @@ body {
 }
 
 .story-text-main {
-    font-size: 60px;
+    font-size: 50px;
     text-transform: uppercase;
 }
 .story-text-sub {
@@ -113,6 +115,8 @@ body {
     font-size: 16px;
     font-family: 'newsreader';
     text-align: left;
+    letter-spacing: 5%;
+    line-height: 22px;
 }
 
 /* Menu */
@@ -203,7 +207,7 @@ body {
     width: 70%;
 }
 .barista-text-main {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 500;
     text-transform: uppercase;
     font-family: 'perpetua';
@@ -212,6 +216,8 @@ body {
     margin-top: 18px;
     font-size: 16px;
     font-family: 'newsreader';
+    letter-spacing: 5%;
+    line-height: 22px;
 }
 .barista-btn {
     margin-top: 32px;
@@ -249,7 +255,7 @@ body {
     color: var(--black-bg);
 }
 .review-text-main {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 500;
     text-transform: uppercase;
 }
@@ -257,6 +263,8 @@ body {
     margin-top: 18px;
     font-size: 16px;
     font-family: 'newsreader';
+    letter-spacing: 5%;
+    line-height: 22px;
 }
 
 /* Footer */
@@ -305,4 +313,62 @@ body {
 }
 .copyright {
     text-align: center;
+}
+
+/* Review section*/
+.review-roller {
+    display: flex;
+    flex-direction: column;
+    color: var(--black-bg);
+    font-family: 'newsreader';
+    text-align: center;
+    background: var(--coffee-bg);
+    width: 100%;
+    padding: 50px 0px;
+}
+.review-roller-header {
+    font-size: 40px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: 'perpetua';
+}
+.roller-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 45px;
+}
+.testimonials-container,.testimonials-ex-border {
+    height: auto;
+}
+.testimonials-container {
+    padding: 15px;
+    max-width: 250px;
+    height: auto;
+    text-align: left;
+    border: 1px solid var(--black-bg);
+    font-family: 'newsreader';
+    letter-spacing: 5%;
+    line-height: 22px;
+}
+.testimonial-from {
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+    margin: 10px 0px;
+} 
+/*
+.testimonials-ex-border {
+    height: 5px;
+    width: 300px;
+    border: 1px solid var(--black-bg);
+    position: relative;
+    bottom: 10px;
+    left: 30px;
+}
+*/
+
+.reviews-wrapper {
+    width: 350px;
+    height: auto;
 }
