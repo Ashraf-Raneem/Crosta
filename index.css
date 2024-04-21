@@ -11,10 +11,12 @@
 :root {
     --black-bg: #171515;
     --coffee-bg: #FFE2AB;
-    --text-white: #ffffff;
+    --text-white: #fffef5;
     --transparent-one: #1715157d;
     
 }
+
+* {box-sizing: border-box}
 
 body {
     background: var(--black-bg);
@@ -61,7 +63,7 @@ body {
     z-index: 4;
     letter-spacing: 5%;
 }
-.cover-text-main {
+.text-main {
     font-size: 3.75rem;
     font-weight: 200;
     text-transform: uppercase;
@@ -70,13 +72,7 @@ body {
     color: #FFE2AB;
 
 }
-.cover-text-sub {
-    margin-top: 5%;
-    width: 60%;
-    letter-spacing: 5%;
-    line-height: 22px;
-    font-family: 'newsreader';
-}
+
 .line {
     height: 1px;
     width: 100%;
@@ -114,18 +110,6 @@ body {
     width: 40%;
 }
 
-.story-text-main {
-    color: #FFE2AB;
-    font-size: 50px;
-    text-transform: uppercase;
-}
-.story-text-sub {
-    margin: 20px 20% 0px 0px;
-    font-family: 'newsreader';
-    text-align: left;
-    letter-spacing: 5%;
-    line-height: 22px;
-}
 
 /* Menu */
 .menu {
@@ -245,18 +229,11 @@ body {
     text-align: left;
     width: 70%;
 }
-.barista-text-main {
-    font-size: 50px;
-    
-    text-transform: uppercase;
-    font-family: 'perpetua';
-    color: var(--coffee-bg);
-}
-.barista-text-sub {
+.text-sub {
     margin-top: 18px;
     font-family: 'newsreader';
     letter-spacing: 5%;
-    line-height: 22px;
+    line-height: 28px;
 }
 .barista-btn {
     margin-top: 32px;
@@ -414,6 +391,50 @@ body {
 
 /* MENU PAGE */
 
+/* Style the tab */
+.tab {
+    background-color: var(--black-bg);
+    float: left;
+    width: 30%;
+    height: 300px;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    display: block;
+    background-color: var(--black-bg);
+    font-size: 22px;
+    font-family: 'newsreader';
+    color: #ffe2ab;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ffe2ab25;
+  }
+  
+  /* Create an active/current "tab button" class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 300px;
+  }
+
 .container-col-1{
     flex-direction: column; 
     justify-content: flex-start; 
@@ -449,6 +470,14 @@ body {
     line-height: 22px;
   }
 
+  .heading-1{
+     color: #FFE2AB; font-size: 52px;
+     font-family: Perpetua Titling MT; 
+     font-weight: 300; 
+     letter-spacing: 2.60px; 
+     word-wrap: break-word
+  }
+
 @media only screen and (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -473,7 +502,7 @@ body {
         text-align: center;
     }
 
-    .cover-text-main {
+    .text-main {
         font-size: 2rem;
     }
 
@@ -526,14 +555,6 @@ body {
         color:var(--white)
     }
 
-    .barista-text-main {
-        font-size: 100px;
-        font-weight: 500;
-        text-transform: uppercase;
-        font-family: 'perpetua';
-        color: var(--coffee-bg);
-        margin-bottom: 30px; /* Add some space between the main text and subtext */
-    }
 
     .story,
     .menu {
@@ -564,9 +585,7 @@ body {
         font-size: 1.5rem;
     }
 
-    .barista-text-main,
-    .review-text-main,
-    .story-text-main
+    .text-main,
     .review-roller-header {
         font-size: 3rem;
     }
