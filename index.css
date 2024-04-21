@@ -410,8 +410,44 @@ body {
     width: 350px;
     height: auto;
 }
- 
 
+
+/* MENU PAGE */
+
+.container-col-1{
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap: 55px; 
+    display: inline-flex
+}
+.sub-cat-h  {
+    color: var(--coffee-bg);
+    font-size: 38px; 
+    font-family: Newsreader; 
+    font-weight: 300; 
+    letter-spacing: 1.90px;
+ 
+}
+  .item-name, .item-price, .item-description {
+    font-size: 16px;
+    font-family: Newsreader;
+    letter-spacing: 0.90px;
+  }
+  
+  .item-name {
+    font-weight: 400;
+  }
+  
+  .item-price {
+    font-weight: 400;
+  }
+  
+  .item-description {
+    width: 280px;
+    font-weight: 300;
+    line-height: 22px;
+  }
 
 @media only screen and (max-width: 768px) {
     .navbar {
