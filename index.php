@@ -7,23 +7,65 @@
     <title>Crosta</title>
 </head>
 <body>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div style="margin-left: 50px; ">
+          <div style=" justify-content: flex-start; align-items: flex-start; gap: 40px; display: inline-flex; padding-bottom:50px;">
+            <img src="https://via.placeholder.com/114x110" />
+              <div class="container-col-1">
+                <div class="name-price-container">
+                    <span class="text-main-2">NUTELLA CREPE</span>
+                    <span >220 ৳ </span>
+                 </div>
+                 <div id="counter" class="counter">
+                  <div class="decrement">—</div>
+                  <div class="count">1</div>
+                  <div class="increment">+</div>
+              </div>
+              </div>
+              
+          </div>
+      
+          <div class="calc-container" style="padding-bottom:50px;">
+            <div class="column">
+                <div class="label">Subtotal</div>
+                <div class="label">Delivery</div>
+                <div class="label total-label">Total</div>
+            </div>
+            <div class="column-la">
+                <div class="value">395 ৳</div>
+                <div class="value">60 ৳</div>
+                <div class="value total-value">455 ৳</div>
+            </div>
+          </div>
+          
+          <button class="button">
+            PROCEED TO CHECKOUT
+          </button>
+        
+        </div>
+      </div>
+
+
     <div class="navbar">
         <div class="nav">
-            <span>Menu</span>
+            <span>Barista Classes</span>
         </div>
         <div class="nav">
-            <span>Cart (1) </span>
+            <span>Our Story  </span>
         </div>
         <div class="nav head">
             <img src="./assets/icons/logo-md.png"/>
         </div>
         <div class="nav">
-            <span>Our Story</span>
+            <span><a href="menu.php">Menu</a></span>
         </div>
         <div class="nav">
-            <span>Barista Classes</span>
+            <span onclick="openNav()">Cart [ 0 ]</span>
         </div>
     </div>
+
     <div class="cover">
         <div class="cover-text-wrapper">
             <div class="text-main">
@@ -201,4 +243,17 @@
         <span>&copy; Copyright Crosta. All rights reserved</span>
     </div>
 </body>
+<script>/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "680px";
+      document.getElementById("main").style.marginRight = "680px";
+    
+    }
+    
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginRight = "0";
+    
+    }</script>
 </html>

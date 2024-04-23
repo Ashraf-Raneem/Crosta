@@ -154,6 +154,16 @@ body {
     font-size: 24px;
     font-weight: 600;
 }
+
+.menu-item{
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s
+}
+
+.menu-item:hover{
+    color:#FFE2AB;
+    cursor: pointer;
+}
 .menu-bottom-img {
     position: relative;
     z-index: 2;
@@ -593,7 +603,10 @@ body {
     gap: 38px;
     display: inline-flex;
 }
-
+a{
+    text-decoration: none;
+    color: white;
+}
 .total-label {
     font-size: 18px;
     font-weight: 500;
@@ -607,16 +620,32 @@ body {
 }
 
 .button{
-    padding: 22px;
+    padding: 15px;
     box-shadow: 0px 4px 0px black;
     border: 1px rgba(255, 255, 255, 0.80) solid;
     color: rgba(255, 255, 255, 0.80);
     font-size: 18px;
     font-family: Newsreader;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.90px;
     cursor: pointer;
     background-color: #252121;
+}
+
+.button-sub{
+    padding: 15px;
+    color: rgba(255, 255, 255, 0.80);
+    border: 1px rgba(255, 255, 255, 0.80) solid;
+    font-size: 18px;
+    font-family: Newsreader;
+    font-weight: 400;
+    letter-spacing: 0.90px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.cart-item{
+    justify-content: flex-start; align-items: flex-start; gap: 40px; display: inline-flex; padding-bottom:50px;
 }
 
   

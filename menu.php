@@ -1,3 +1,47 @@
+<?php
+// Step 1: Connect to the Database
+$host = 'localhost'; 
+$username = 'root'; 
+$password = ''; 
+$database = 'crosta'; 
+
+$conn = mysqli_connect($host, $username, $password, $database);
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+} catch (PDOException $e) {
+    die("Error: " . $e->getMessage() );
+}
+
+$sql = "SELECT * FROM menu";
+
+// Execute the query
+$result = $conn->query($sql);
+
+// Check if any rows were returned
+if ($result->num_rows > 0) {
+    // Initialize empty arrays to store data
+    $item_names = array();
+    $item_descriptions = array();
+    $item_prices = array();
+    $item_sizes = array();
+    $item_categories = array();
+    
+    // Loop through each row and store data in arrays
+    while ($row = $result->fetch_assoc()) {
+        $item_names[] = $row["item_name"];
+        $item_descriptions[] = $row["item_description"];
+        $item_prices[] = $row["item_price"];
+        $item_sizes[] = $row["item_size"];
+    }
+} else {
+    echo "0 results";
+}
+
+// Close the database connection
+$conn->close();
+             
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,24 +53,14 @@
 </head>
 <body>
 
-<div  id="mySidenav" class="sidenav">
+<div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div style="margin-left: 50px; ">
-    <div style=" justify-content: flex-start; align-items: flex-start; gap: 40px; display: inline-flex; padding-bottom:50px;">
-      <img src="https://via.placeholder.com/114x110" />
-        <div class="container-col-1">
-          <div class="name-price-container">
-              <span class="text-main-2">NUTELLA CREPE</span>
-              <span >220 ৳ </span>
-           </div>
-           <div id="counter" class="counter">
-            <div class="decrement">—</div>
-            <div class="count">1</div>
-            <div class="increment">+</div>
-        </div>
-        </div>
-        
-    </div>
+  
+  <div style="margin-left: 50px;">
+   <div id="cart-items">
+
+   </div>
+  
 
     <div class="calc-container" style="padding-bottom:50px;">
       <div class="column">
@@ -35,14 +69,18 @@
           <div class="label total-label">Total</div>
       </div>
       <div class="column-la">
-          <div class="value">395 ৳</div>
+          <div id="subtotal" class="value">395 ৳</div>
           <div class="value">60 ৳</div>
-          <div class="value total-value">455 ৳</div>
+          <div id="total" class="value total-value">455 ৳</div>
       </div>
     </div>
     
-    <button class="button">
-      PROCEED TO CHECKOUT
+    <button id="clearButton" class="button-sub">
+      Clear cart
+    </button>
+
+    <button style="margin-left:50px" class="button">
+      Order
     </button>
   
   </div>
@@ -62,7 +100,7 @@
             <span>Menu</span>
         </div>
         <div class="nav">
-            <span onclick="openNav()">Cart [ 0 ]</span>
+            <span  onclick="openNav()">Cart [ <span id="cart-count">0</span> ]</span>
         </div>
     </div>
 
@@ -95,33 +133,30 @@
           <div id="CoffeeTea" class="tabcontent" style="display: block;">
               
             <div class="container-col-1">
-                <div class="sub-cat-h">Coffee (Hot)</div>
+              <div class="sub-cat-h">Coffee (Hot)</div>
                 <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 36px; display: flex">
-                  <div class="menu-item">
-                      <div class="item-description">
-                        <span class="item-name">ESPRESSO</span>
-                        <p>A rich, concentrated shot of coffee served in a small cup. Available in single and double shots.</p>
-                      </div>
-                      <div class="item-price">140 / 175</div>
-                    </div>
-        
-                    <div class="menu-item">
-                      <div class="item-description">
-                        <span class="item-name">AMERICANO</span>
-                        <p>Diluted espresso, milder flavour. </p>
-                      </div>
-                      <div class="item-price">140 / 175</div>
-                    </div>
-                    
-                </div>
-              </div>
+                  
+                <?php
+                    // Loop through each menu item and generate HTML dynamically
+                      for ($i = 0; $i < count($item_names); $i++) {
+                        echo '<div class="menu-item" onclick="addToCart(\'' . $item_names[$i] . '\', \'' . $item_prices[$i] . '\')">';
+                      echo '<div class="item-description">';
+                        echo '<span class="item-name">' . $item_names[$i] . '</span>';
+                       echo '<p>' . $item_descriptions[$i] . '</p>';
+                       echo '</div>';
+                        echo '<div class="item-price">' . $item_prices[$i] . '</div>';
+                        echo '</div>';
+                          }
+                ?>
+            </div>
+           </div>
 
               <div class="container-col-1">
                 <div class="sub-cat-h">Coffee (Iced)</div>
                 <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 36px; display: flex">
                   <div class="menu-item">
                       <div class="item-description">
-                        <span class="item-name">ESPRESSO</span>
+                        <span class="item-name">Espresso</span>
                         <p>A rich, concentrated shot of coffee served in a small cup. Available in single and double shots.</p>
                       </div>
                       <div class="item-price">140 / 175</div>
@@ -129,7 +164,7 @@
         
                     <div class="menu-item">
                       <div class="item-description">
-                        <span class="item-name">AMERICANO</span>
+                        <span class="item-name">Americano</span>
                         <p>Diluted espresso, milder flavour. </p>
                       </div>
                       <div class="item-price">140 / 175</div>
@@ -159,7 +194,7 @@
                 <div class="grid">
                     <span class="head">Location</span>
                     <span>House-01, Sector-14, Shah Makhdum Ave, Uttara, Dhaka 1230</span>
-                    <span>Google maps</span>
+                    <a href="Add-To-Menu-Frontend.php">Google maps</a>
                 </div>
                 <div class="grid">
                     <div class="contact head">
@@ -244,5 +279,131 @@
         });
     });
     </script>
+    
+    <script>
+function updateCartCount() {
+    // Retrieve cart items from local storage
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Select the cart count element
+    let cartCountElement = document.getElementById('cart-count');
+
+    // Update the cart count
+    cartCountElement.innerText = cartItems.length;
+}
+
+// Call the updateCartCount function initially to set the cart count
+updateCartCount();
+      
+function clearCart() {
+    localStorage.clear();
+    updateCartDisplay(); // Update cart display after clearing
+  }
+
+  // Function to update the cart display
+  function updateCartDisplay() {
+    // Retrieve cart items from local storage
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Select the cart items container
+    let cartContainer = document.getElementById('cart-items');
+
+    // Clear previous cart items
+    cartContainer.innerHTML = '';
+
+    // Total price variable
+    let total = 0;
+
+    // Loop through each item in the cart and add it to the cart container
+    cartItems.forEach(item => {
+      // Create a new cart item element
+      let itemElement = document.createElement('div');
+      itemElement.classList.add('cart-item');
+
+      // Create an image element (placeholder image)
+      let imgElement = document.createElement('img');
+      imgElement.src = 'https://via.placeholder.com/114x110';
+
+      // Create a container for the item name and price
+      let itemDetailsElement = document.createElement('div');
+      itemDetailsElement.classList.add('container-col-1');
+
+      // Create elements for the item name and price
+      let namePriceContainer = document.createElement('div');
+      namePriceContainer.classList.add('name-price-container');
+      namePriceContainer.innerHTML = `
+          <span class="text-main-2">${item.name}</span>
+          <span>${item.price} ৳</span>
+      `;
+
+      // Create the counter element (decrement, count, increment)
+      let counterElement = document.createElement('div');
+      counterElement.classList.add('counter');
+      counterElement.innerHTML = `
+          <div class="decrement">—</div>
+          <div class="count">1</div>
+          <div class="increment">+</div>
+      `;
+
+      // Append all elements to the cart item element
+      itemElement.appendChild(imgElement);
+      itemDetailsElement.appendChild(namePriceContainer);
+      itemDetailsElement.appendChild(counterElement);
+      itemElement.appendChild(itemDetailsElement);
+
+      // Append the cart item element to the cart container
+      cartContainer.appendChild(itemElement);
+      total += item.price;
+    });
+
+    // Update the total value or any other calculations if necessary
+  }
+
+      // Calculate subtotal
+      let subtotal = total;
+    document.getElementById('subtotal').innerText = `${subtotal} ৳`;
+
+    // Shipping cost
+    let shipping = 60;
+
+    // Calculate total
+    let finalTotal = subtotal + shipping;
+    document.getElementById('total').innerText = `${finalTotal} ৳`;
+
+  // Call the updateCartDisplay function initially to populate the cart items
+  updateCartDisplay();
+        // Function to add items to the cart
+        function addToCart(itemName, price) {
+          console.log("addToCart function called");
+            // Retrieve existing cart items from local storage or initialize an empty array
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Add the new item to the cart
+            cartItems.push({ name: itemName, price: price });
+
+            // Save the updated cart items back to local storage
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+
+            // Update the cart display
+                updateCartDisplay();
+
+    // Update the cart count
+    updateCartCount();
+        }
+
+        // Function to update the cart display
+    
+    
+   
+updateCartDisplay();
+
+    document.getElementById('clearButton').addEventListener('click', function() {
+ 
+    localStorage.clear();
+    console.log("Clear button clicked");
+});
+        
+    </script>
+   
 
   </html>
