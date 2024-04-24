@@ -70,18 +70,18 @@ $conn->close();
       </div>
       <div class="column-la">
           <div id="subtotal" class="value">395 ৳</div>
-          <div class="value">60 ৳</div>
+          <div >60 ৳</div>
           <div id="total" class="value total-value">455 ৳</div>
       </div>
     </div>
     
-    <button id="clearButton" class="button-sub">
+    <a id="clearButton" class="button-sub">
       Clear cart
-    </button>
+      </a>
 
-    <button style="margin-left:50px" class="button">
-      Order
-    </button>
+    <a href="user-details.php" style="margin-left:50px" class="button">
+      Continue
+    </a>
   
   </div>
 </div>
@@ -362,13 +362,16 @@ function clearCart() {
       // Calculate subtotal
       let subtotal = total;
     document.getElementById('subtotal').innerText = `${subtotal} ৳`;
+    console.log(total);
 
     // Shipping cost
     let shipping = 60;
+    console.log(shipping);
 
     // Calculate total
     let finalTotal = subtotal + shipping;
     document.getElementById('total').innerText = `${finalTotal} ৳`;
+    console.log(finalTotal);
 
   // Call the updateCartDisplay function initially to populate the cart items
   updateCartDisplay();
